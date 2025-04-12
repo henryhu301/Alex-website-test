@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Site Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .profile-photo {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .profile-grid {
+            display: flex;
+            align-items: flex-start;
+        }
+        .profile-image {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .profile-info {
+            flex: 2;
+        }
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 10px 20px;
+            background-color: #35424a;
+            width: 100vw;
+            box-sizing: border-box;
+        }
+        .logo {
+            height: 80px;
+            max-width: 100%;
+        }
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+ 
+        .menu-toggle {
+            display: none;
+        }
+ 
+        @media (max-width: 768px) {
+            .header-bar {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+            }
+
+            .logo {
+                max-height: 60px;
+                height: auto;
+                width: auto;
+            }
+
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 10px;
+                cursor: pointer;
+                align-self: center;
+                position: relative;
+            }
+
+            .menu-toggle span {
+                background: #fff;
+                height: 4px;
+                width: 30px;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                z-index: 999;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background-color: #35424a;
+                width: 100%;
+                padding: 10px 0;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav li {
+                text-align: right;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bar">
+            <img src="img/ntu-logo.png" alt="NTU Logo" class="logo">
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#teaching">Teaching</a></li>
+                    <li><a href="#group-members">Group Members</a></li>
+                    <li><a href="#profile">Prof Alex Yan</a></li>
+                    <li><a href="#join-us">Join Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="main-content">
+        <section id="about" style="display: none;">
+            <h2>About</h2>
+            <p>Welcome to the research group of <strong>Prof. Alex Yan Qingyu</strong> at the School of Materials Science and Engineering, Nanyang Technological University (NTU), Singapore. Our group is dedicated to <strong>advancing materials science and energy technologies</strong> through cutting-edge research in <strong>battery materials, electrocatalysis, thermoelectrics, and functional nanomaterials</strong>. This website provides an overview of our ongoing research projects, publications, teaching activities, group-members, and opportunities to join the team. We aim to foster a collaborative and interdisciplinary research environment that addresses global challenges in sustainable energy and materials innovation.</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="img/about.png" alt="About Us" style="max-width: 80%; height: auto;">
+            </div>
+        </section>
+        <section id="join-us" style="display: none;">
+            <h2>Join Us</h2>
+            <p>We are always looking for highly motivated individuals to join our team. If you are interested in cutting-edge research in materials science, energy storage and conversion, or nanotechnology, we welcome your application!</p>
+            
+            <h3>Postdoctoral Researchers</h3>
+            <p>Postdoctoral positions are available for candidates with a strong background in electrochemistry, battery research, electrocatalysis, or thermoelectrics. Please contact us for potential openings.</p>
+
+            <h3>PhD Students</h3>
+            <p>We are actively recruiting PhD students through NTU's graduate program. If you are passionate about research and have a strong foundation in materials science, chemistry, or physics, we encourage you to apply and contact us for potential openings.</p>
+
+            <h3>Undergraduate Students</h3>
+            <p>We offer Final Year Project (FYP) and URECA opportunities to NTU undergraduate students who are interested in hands-on research experience. Students can participate in ongoing projects related to batteries, catalysis, or thermoelectrics.</p>
+        </section>
+        <section id="research" style="display: none;">
+            <h2>Research</h2>
+            <p>Our group conducts research at the intersection of materials science and energy technologies, with a focus on developing <strong>advanced battery systems</strong>, <strong>electrocatalysts</strong>, and <strong>thermoelectric materials</strong>. We aim to address pressing global energy and sustainability challenges by designing and investigating new materials with superior performance and durability. Our research integrates experimental synthesis, electrochemical analysis, and structural characterization to drive innovations in clean energy storage and conversion.</p>
+            <p>Our research has been generously supported by various funding agencies and institutions, including Singapore's A*STAR SERC, NRF CREATE Programme, the Maritime and Port Authority, Energy Market Authority, DSO National Laboratories, the NTU-Rolls-Royce Joint Laboratory, the Singapore Ministry of Education (MOE), and others.</p>
+            
+            <div class="research-item">
+              <div class="research-text">
+                <h3>Advanced Battery Technologies and Novel Materials</h3>
+                <p>Our research group is actively engaged in the development of next-generation battery technologies, with a strong focus on the discovery and engineering of advanced materials. We aim to significantly enhance energy density, cycle life, and safety across a broad spectrum of applications, from portable electronics to electric vehicles and grid-scale energy storage.</p>
+                <p>We explore a variety of electrode and electrolyte materials for <strong>lithium-ion, sodium-ion, and all-solid-state batteries</strong>. In addition, we are highly interested in <strong>aqueous battery systems—including redox flow batteries, aqueous aluminum batteries, and aqueous zinc batteries</strong>—as safe, cost-effective, and scalable solutions for large-scale energy storage. Our methodology integrates material synthesis, electrochemical evaluation, and multiscale characterization techniques.</p>
+                <p>We also investigate the fundamental mechanisms driving electrochemical performance, employing advanced in situ and ex situ spectroscopy and microscopy. These insights support the rational design of materials with engineered microstructures and interfaces to optimize ion transport and long-term stability.</p>
+              </div>
+              <img src="img/battery.png" alt="Battery Research" class="research-img">
+            </div>
+            
+            <div class="research-item">
+              <div class="research-text">
+                <h3>Electrocatalysts for Energy Conversion Reactions</h3>
+                <p>Our group designs and develops electrocatalysts for critical energy conversion processes, including the nitrate reduction reaction (NO₃RR) and small molecule oxidation. These reactions play vital roles in sustainable energy technologies such as fuel cells, electrolyzers, and electrochemical reactors for green synthesis.</p>
+                <p>We aim to identify highly active, stable, and affordable catalysts composed of earth-abundant elements. Using strategies such as <strong>compositional tuning, defect engineering, and heterostructure design</strong>, we tailor nanostructured catalysts to enhance their catalytic activity, selectivity, and durability. Advanced electrochemical testing and spectroscopic characterization enable us to unravel reaction mechanisms and optimize catalyst design for real-world performance.</p>
+              </div>
+              <img src="img/catalysis.png" alt="Catalysis Research" class="research-img">
+            </div>
+            
+            <div class="research-item">
+              <div class="research-text">
+                <h3>High-Performance Thermoelectric Semiconductors</h3>
+                <p>We conduct research on thermoelectric materials capable of directly converting waste heat into electricity, offering a sustainable approach to energy recovery in industrial and automotive systems. Our efforts aim to enhance the thermoelectric figure of merit (ZT) by optimizing the interplay between electrical conductivity, Seebeck coefficient, and thermal conductivity.</p>
+                <p>Our work focuses on the <strong>synthesis and optimization of thermoelectric materials</strong>. We employ advanced techniques—including nanostructuring, doping, and band structure engineering—to tune transport properties and phonon scattering mechanisms. Ultimately, we aim to develop thermoelectric materials with high efficiency and compatibility with scalable fabrication techniques.</p>
+              </div>
+              <img src="img/thermoelectric.png" alt="Thermoelectric Research" class="research-img">
+            </div>
+        </section>
+        <section id="publications" style="display: none;">
+            <h2>Publications</h2>
+            <p>Prof Alex Yan is recognized as a Highly Cited Researcher for Materials Science by the Web of Science Group (2018–2024) with total citations &gt;50,000 and h-index of 121, .</p>
+            <ol>
+                <li>Yan, A., Smith, J., & Doe, R. (2022). <em>Innovations in Machine Learning Algorithms</em>. Journal of Artificial Intelligence, 15, 123-145.</li>
+                <li>Yan, A., & Lee, K. (2021). <em>Applications of Natural Language Processing in Modern Technology</em>. International Journal of Computer Science, 10, 78-89.</li>
+                <li>Yan, A., Brown, T., & Green, M. (2020). <em>Advancements in Predictive Modeling Techniques</em>. Data Science Review, 5, 200-215.</li>
+                <li>Yan, A., & White, L. (2019). <em>Real-time Object Detection Using Computer Vision</em>. Journal of Machine Learning, 8, 50-67.</li>
+            </ol>
+        </section>
+        <section id="teaching" style="display: none;">
+            <h2>Teaching</h2>
+            <ul>
+                <li><strong>MS 4014: Nanomaterials: fundamentals and applications</strong><br>
+                    This course aims to provide a comprehensive overview of nanomaterials in terms of the synthesis, characterization, properties, and applications. It will cover the fundamental scientific principles for the different synthesis techniques, assembly of nanostructured materials and, new physical and chemical properties at the nanoscale. Existing and emerging applications will also be discussed through case studies.
+                </li>
+                <br><br>
+                <li><strong>MS 4630: Photovoltaic Devices and Energy Storage</strong><br>
+                    The course aims to introduce the concept of energy harnessing and energy storage technology through photovoltaics and batteries. It would teach students the challenges in boosting the efficiency of PV devices through understanding of PV device principles and the factors affecting the PV cell efficiency. The course would also teach students energy storage, supercapacitor and batteries concepts, lithium ion battery technology, essential techniques and technology of batteries/supercapacitors through understanding the underlying kinetics and thermodynamics of electrode processes occurring in various batteries.
+                </li>
+            </ul>
+        </section>
+        <section id="group-members" style="display: none;">
+            <h2>Group Members</h2>
+            <div id="group-members-container"></div>
+        </section>
+        <section id="profile" style="display: none;">
+            <div class="profile-grid">
+                <div class="profile-info">
+                    <h2 class="profile-title">Prof Alex Yan Qingyu</h2>
+                    <p><a href="https://scholar.google.com/citations?user=SJHsKqkAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar Profile</a></p>
+                    <h3>Contact Information</h3>
+                    <p><strong>School:</strong> Materials Science and Engineering</p>
+                    <p><strong>Office:</strong> ABN-B2C-19</p>
+                    <p><strong>Email:</strong> alexyan@ntu.edu.sg</p>
+                    <p><strong>Contact Number:</strong> 67904583</p>
+                    <h3>Employment History</h3>
+                    <ul>
+                        <li>Professor (09/2018–present), MSE, NTU</li>
+                        <li>Associate Professor (03/2013–08/2018), MSE, NTU</li>
+                        <li>Assistant Professor (02/2008–02/2013), MSE, NTU</li>
+                        <li>Research Fellow (11/2004–11/2007), Rensselaer Polytechnic Institute</li>
+                    </ul>
+                    <h3>Academic Qualifications</h3>
+                    <ul>
+                        <li>BS in Materials Science and Engineering (07/1999), Nanjing University, China</li>
+                        <li>Ph.D. in Materials Science and Engineering (12/2004), SUNY Stony Brook, USA</li>
+                    </ul>
+                    <h3>Professional Qualifications and Memberships</h3>
+                    <ul>
+                        <li>Chair, Electrochemical Society, Singapore Section (Mar 2017–present)</li>
+                        <li>Fellow, Royal Society of Chemistry (May 2018–present)</li>
+                        <li>Joint Treasurer, Singapore MRS (Apr 2014–2016)</li>
+                    </ul>
+                </div>
+                <div class="profile-image">
+                    <img src="img/alex.jpg" alt="Prof Alex Yan Qingyu" class="profile-photo">
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025. All rights reserved.</p>
+    </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('#main-content > section');
+
+    function showSection(id) {
+        sections.forEach(section => {
+            if (section.id === id) {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        });
+        const navMenu = document.querySelector('nav ul');
+        navMenu.classList.remove('show');
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            showSection(targetId);
+        });
+    });
+
+    const initialHash = window.location.hash.substring(1);
+    if (initialHash) {
+        showSection(initialHash);
+    } else {
+        showSection('about'); // default section to show if no hash
+    }
+});
+</script>
+    <script>
+        fetch('group-members.csv')
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Verify the content is loaded
+                const members = data.split('\n').slice(1);
+                const container = document.getElementById('group-members-container');
+                container.innerHTML = '';
+
+                const phdSection = document.createElement('div');
+                const postdocSection = document.createElement('div');
+                const exchangeSection = document.createElement('div');
+                
+                const phdHeader = document.createElement('h3');
+                phdHeader.textContent = 'PhD Students';
+                const phdContainer = document.createElement('div');
+                phdContainer.classList.add('group-grid');
+
+                const postdocHeader = document.createElement('h3');
+                postdocHeader.textContent = 'Postdoctoral Researchers';
+                const postdocContainer = document.createElement('div');
+                postdocContainer.classList.add('group-grid');
+
+                const exchangeHeader = document.createElement('h3');
+                exchangeHeader.textContent = 'Exchange Students';
+                const exchangeContainer = document.createElement('div');
+                exchangeContainer.classList.add('group-grid');
+                const masterHeader = document.createElement('h3');
+                masterHeader.textContent = 'Master Students';
+                const masterContainer = document.createElement('div');
+                masterContainer.classList.add('group-grid');
+
+                const parseCSVLine = (line) => {
+                    const regex = /(?:\"([^\"]*)\"|([^\",]+))/g;
+                    const matches = [];
+                    let match;
+                    while ((match = regex.exec(line))) {
+                        matches.push(match[1] || match[2] || '');
+                    }
+                    return matches;
+                };
+
+                const allMembers = [];
+                members.forEach(member => {
+                    const [name, description = '', role = ''] = parseCSVLine(member);
+                    const memberCard = document.createElement('div');
+                    memberCard.classList.add('member');
+                    const imageName = name.trim() + '.jpg';
+                    const imagePath = 'img/group/' + imageName;
+                    const image = document.createElement('img');
+                    image.src = imagePath;
+                    image.alt = name;
+                    image.onerror = function () {
+                        this.onerror = null;
+                        this.src = 'img/group/nil.png';
+                    };
+                    memberCard.innerHTML = '';
+                    memberCard.appendChild(image);
+                    const namePara = document.createElement('p');
+                    namePara.innerHTML = `<strong>${name}</strong>`;
+                    memberCard.appendChild(namePara);
+                    if (description) {
+                        const descPara = document.createElement('p');
+                        descPara.textContent = description;
+                        memberCard.appendChild(descPara);
+                    }
+                    allMembers.push({ name: name.trim().toLowerCase(), role: role.trim().toLowerCase(), element: memberCard });
+                });
+                
+                allMembers.sort((a, b) => a.name.localeCompare(b.name));
+                
+                allMembers.forEach(({ role, element }) => {
+                    switch (role) {
+                        case 'phd student':
+                            phdContainer.appendChild(element);
+                            break;
+                        case 'postdoctoral researcher':
+                            postdocContainer.appendChild(element);
+                            break;
+                        case 'exchange student':
+                            exchangeContainer.appendChild(element);
+                            break;
+                        case 'master student':
+                            masterContainer.appendChild(element);
+                            break;
+                        default:
+                            phdContainer.appendChild(element); // Fallback to default category
+                    }
+                });
+
+                if (phdContainer.childElementCount === 0) {
+                    phdContainer.innerHTML = '<p>No PhD students listed.</p>';
+                }
+                if (postdocContainer.childElementCount === 0) {
+                    postdocContainer.innerHTML = '<p>No postdoctoral researchers listed.</p>';
+                }
+                if (exchangeContainer.childElementCount === 0) {
+                    exchangeContainer.innerHTML = '<p>No exchange students listed.</p>';
+                }
+
+                phdSection.appendChild(phdHeader);
+                phdSection.appendChild(phdContainer);
+                postdocSection.appendChild(postdocHeader);
+                postdocSection.appendChild(postdocContainer);
+                exchangeSection.appendChild(exchangeHeader);
+                exchangeSection.appendChild(exchangeContainer);
+                
+                container.appendChild(phdSection);
+                container.appendChild(postdocSection);
+                
+                if (masterContainer.childElementCount > 0) {
+                    const masterSection = document.createElement('div');
+                    masterSection.appendChild(masterHeader);
+                    masterSection.appendChild(masterContainer);
+                    container.appendChild(masterSection);
+                }
+                
+                container.appendChild(exchangeSection);
+            })
+            .catch(error => {
+                const container = document.getElementById('group-members-container');
+                container.innerHTML = '<p>Error loading group members data.</p>';
+            });
+    </script>
+    <script>
+        fetch('Alex Group Alumni.csv')
+            .then(response => response.text())
+            .then(data => {
+                const alumni = data.split('\n').slice(1);
+                const container = document.getElementById('group-members-container');
+                const alumniList = document.createElement('ul');
+                alumniList.classList.add('alumni-list');
+
+                const alumniHeader = document.createElement('h3');
+                alumniHeader.textContent = 'Alumni';
+
+                const parseCSVLine = (line) => {
+                    const regex = /(?:\"([^\"]*)\"|([^\",]+))/g;
+                    const matches = [];
+                    let match;
+                    while ((match = regex.exec(line))) {
+                        matches.push(match[1] || match[2] || '');
+                    }
+                    return matches;
+                };
+
+                const alumniEntries = alumni.map(member => {
+                    const [name, role, yearInLab, destination, country] = parseCSVLine(member);
+                    return { name, role, yearInLab, destination, country };
+                }).filter(entry => entry.yearInLab).sort((a, b) => {
+                    const startYearA = parseInt((a.yearInLab || '').split(/–|-/)[0].trim()) || 0;
+                    const startYearB = parseInt((b.yearInLab || '').split(/–|-/)[0].trim()) || 0;
+                    if (startYearB !== startYearA) {
+                        return startYearB - startYearA;
+                    }
+                    const endYearA = parseInt((a.yearInLab || '').split(/–|-/)[1]?.trim()) || 0;
+                    const endYearB = parseInt((b.yearInLab || '').split(/–|-/)[1]?.trim()) || 0;
+                    return endYearB - endYearA;
+                });
+
+                alumniEntries.forEach(({ name, role, yearInLab, destination, country }) => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<strong>${name}</strong> (${role}${yearInLab ? ', ' + yearInLab : ''})${destination ? ' – ' + destination + (country ? ', ' + country : '') : ''}`;
+                    alumniList.appendChild(listItem);
+                });
+
+                if (alumniList.childElementCount === 0) {
+                    alumniList.innerHTML = '<li>No alumni listed.</li>';
+                }
+
+                container.appendChild(alumniHeader);
+                container.appendChild(alumniList);
+            })
+            .catch(error => {
+                const container = document.getElementById('group-members-container');
+                container.innerHTML = '<p>Error loading alumni data.</p>';
+            });
+    </script>
+    <script>
+    function toggleMenu() {
+        const navMenu = document.querySelector('nav ul');
+        navMenu.classList.toggle('show');
+    }
+    </script>
+</body>
+</html>
