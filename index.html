@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
     <script>
-        fetch('group-members.csv')
+        fetch('group/group-members.csv')
             .then(response => response.text())
             .then(data => {
                 console.log(data); // Verify the content is loaded
@@ -339,13 +339,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const memberCard = document.createElement('div');
                     memberCard.classList.add('member');
                     const imageName = name.trim() + '.jpg';
-                    const imagePath = 'img/group/' + imageName;
+                    const imagePath = 'group/' + imageName;
                     const image = document.createElement('img');
                     image.src = imagePath;
                     image.alt = name;
                     image.onerror = function () {
                         this.onerror = null;
-                        this.src = 'img/group/nil.png';
+                        this.src = 'group/nil.png';
                     };
                     memberCard.innerHTML = '';
                     memberCard.appendChild(image);
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     </script>
     <script>
-        fetch('Alex Group Alumni.csv')
+        fetch('group/Alex Group Alumni.csv')
             .then(response => response.text())
             .then(data => {
                 const alumni = data.split('\n').slice(1);
