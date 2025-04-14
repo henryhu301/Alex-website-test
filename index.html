@@ -196,13 +196,45 @@
         </section>
         <section id="publications" style="display: none;">
             <h2>Publications</h2>
-            <p>Prof Alex Yan is recognized as a Highly Cited Researcher for Materials Science by the Web of Science Group (2018–2024) with total citations &gt;50,000 and h-index of 121, .</p>
-            <ol>
-                <li>Yan, A., Smith, J., & Doe, R. (2022). <em>Innovations in Machine Learning Algorithms</em>. Journal of Artificial Intelligence, 15, 123-145.</li>
-                <li>Yan, A., & Lee, K. (2021). <em>Applications of Natural Language Processing in Modern Technology</em>. International Journal of Computer Science, 10, 78-89.</li>
-                <li>Yan, A., Brown, T., & Green, M. (2020). <em>Advancements in Predictive Modeling Techniques</em>. Data Science Review, 5, 200-215.</li>
-                <li>Yan, A., & White, L. (2019). <em>Real-time Object Detection Using Computer Vision</em>. Journal of Machine Learning, 8, 50-67.</li>
-            </ol>
+            <style>
+              .word-html-sandbox * {
+                font-family: inherit;
+                line-height: 1.5;
+                font-size: 1rem;
+                color: inherit;
+              }
+            
+              .word-html-sandbox p {
+                margin: 0em 0;
+                display: block;
+              }
+            
+              .word-html-sandbox strong {
+                font-weight: bold;
+              }
+            
+              .word-html-sandbox em {
+                font-style: italic;
+              }
+            
+              .word-html-sandbox a {
+                color: inherit;
+                text-decoration: none;
+              }
+            
+              .word-html-sandbox h1, 
+              .word-html-sandbox h2, 
+              .word-html-sandbox h3 {
+                all: revert;
+                font-family: inherit;
+                color: inherit;
+              }
+            
+              .word-html-sandbox li {
+                margin-bottom: 0.5em;
+              }
+            </style>
+            <div id="publication-list-container" class="word-html-sandbox"></div>
         </section>
         <section id="teaching" style="display: none;">
             <h2>Teaching</h2>
@@ -469,11 +501,93 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.innerHTML = '<p>Error loading alumni data.</p>';
             });
     </script>
-    <script>
-    function toggleMenu() {
-        const navMenu = document.querySelector('nav ul');
-        navMenu.classList.toggle('show');
+  <style>
+    .journal {
+      color: #0056b3;
+      font-weight: bold;
     }
+  </style>
+  <script>
+    function cleanWordHtml(html) {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+
+      // First, mark elements with color:blue as journals
+      tempDiv.querySelectorAll('*[style]').forEach(el => {
+        const style = el.getAttribute('style');
+        if (style && /color\s*:\s*blue/i.test(style)) {
+          el.classList.add('journal');
+          el.removeAttribute('style');
+        }
+      });
+
+      // Remove inline styles unless element has class 'journal'
+      tempDiv.querySelectorAll('[style]').forEach(el => {
+        if (!el.classList.contains('journal')) {
+          el.removeAttribute('style');
+        }
+      });
+
+  // Remove specific tags by name
+  ['style', 'script'].forEach(tag => {
+    const elements = tempDiv.getElementsByTagName(tag);
+    while (elements[0]) {
+      elements[0].parentNode.removeChild(elements[0]);
+    }
+  });
+
+  // Remove all occurrences of replacement characters
+  tempDiv.innerHTML = tempDiv.innerHTML.replace(/\uFFFD|�/g, '');
+
+  return tempDiv.innerHTML;
+}
+
+    fetch('Publications.htm')
+      .then(response => response.text())
+      .then(rawHtml => {
+        const cleanedHtml = cleanWordHtml(rawHtml);
+        const container = document.getElementById('publication-list-container');
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = cleanedHtml;
+
+        // Walk through text nodes to replace exact "Qingyu Yan" matches
+        const walker = document.createTreeWalker(tempDiv, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+          const regex = /Qingyu Yan/g;
+          if (regex.test(node.nodeValue)) {
+            const parts = node.nodeValue.split(regex);
+            const fragment = document.createDocumentFragment();
+            parts.forEach((part, i) => {
+              if (part) fragment.appendChild(document.createTextNode(part));
+              if (i < parts.length - 1) {
+                const bold = document.createElement("b");
+                const underline = document.createElement("u");
+                underline.textContent = "Qingyu Yan";
+                bold.appendChild(underline);
+                fragment.appendChild(bold);
+              }
+            });
+            node.parentNode.replaceChild(fragment, node);
+          }
+        }
+
+        // Insert the modified DOM directly into the container
+        container.innerHTML = '';
+        Array.from(tempDiv.childNodes).forEach(node => {
+          container.appendChild(node.cloneNode(true));
+        });
+      })
+      .catch(error => {
+        document.getElementById('publication-list-container').innerHTML = "<p>Failed to load publications.</p>";
+        console.error("Error loading publications.html:", error);
+      });
+  </script>
+    <script>
+        function toggleMenu() {
+            const navMenu = document.querySelector('nav ul');
+            navMenu.classList.toggle('show');
+        }
     </script>
 </body>
 </html>
