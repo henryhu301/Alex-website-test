@@ -492,7 +492,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (alumniList.childElementCount === 0) {
                     alumniList.innerHTML = '<li>No alumni listed.</li>';
                 }
-
+                
+                const photoTitle = document.createElement('h3');
+                photoTitle.textContent = 'Group Photo';
+                container.appendChild(photoTitle);
+                
+                const groupPhoto = document.createElement('div');
+                groupPhoto.style.textAlign = 'center';
+                groupPhoto.style.marginTop = '20px';
+                groupPhoto.innerHTML = '<img src="group/group photo.jpg" alt="Group Photo" style="max-width: 90%; height: auto; border-radius: 10px;">';
+                container.appendChild(groupPhoto);
+                
                 container.appendChild(alumniHeader);
                 container.appendChild(alumniList);
             })
